@@ -8,10 +8,6 @@ executors:
     working_directory: ~/erp
 jobs:
   install:
-    branches:
-      only:
-        - staging
-        - /dev-.*/
     executor: my-executor
     steps:
       - checkout
@@ -32,10 +28,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}      
   test_unit:
-    branches:
-      only:
-        - staging
-        - /dev-.*/
     executor: my-executor
     steps:
       - checkout
@@ -43,9 +35,6 @@ jobs:
           at: ~/erp
       - run: yarn test:unit
   deploy:
-    branches:
-      only:
-        - staging
     machine:
       enabled: true
     steps:
@@ -60,16 +49,36 @@ workflows:
   version: 2.1
   install_and_test:
     jobs:
-      - install          
+      - install:
+          filters:
+            branches:
+              only:
+                - staging
+                - /dev-.*/
       - test_unit:
+          filters:
+            branches:
+              only:
+                - staging
+                - /dev-.*/
           requires:
             - install
       - cypress/run:
+          filters:
+            branches:
+              only:
+                - staging
+                - /dev-.*/
           start: npm run serve
           wait-on: 'http://localhost:8080'
+          cache-key: 'yarn-packages-{{ arch }}-{{ checksum "yarn.lock" }}'
           store_artifacts: true
           yarn: true
       - deploy:
+          filters:
+            branches:
+              only:
+                - staging
           requires:
             - test_unit
             - cypress/run
