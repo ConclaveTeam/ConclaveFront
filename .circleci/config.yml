@@ -49,16 +49,31 @@ workflows:
   version: 2.1
   install_and_test:
     jobs:
-      - install
+      - install:
+          branches:
+            only:
+              - staging
+              - /dev-.*/
       - test_unit:
+          branches:
+            only:
+              - staging
+              - /dev-.*/
           requires:
             - install
       - cypress/run:
+          branches:
+            only:
+              - staging
+              - /dev-.*/
           start: npm run serve
           wait-on: 'http://localhost:8080'
           store_artifacts: true
           yarn: true
       - deploy:
+          branches:
+            only:
+              - staging
           requires:
             - test_unit
             - cypress/run
