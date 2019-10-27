@@ -1,0 +1,64 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+executors:
+  my-executor:
+    docker:
+      - image: circleci/node:10.16.3
+    working_directory: ~/erp
+jobs:
+  install:
+    executor: my-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - attach_workspace:
+          at: ~/erp
+      - run: yarn
+      - persist_to_workspace:
+          root: ~/erp
+          paths:
+            - ./node_modules
+            - yarn.lock
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}      
+  test_unit:
+    executor: my-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/erp
+      - run: yarn test:unit
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "6b:e1:8f:42:15:57:aa:81:f1:4b:22:47:6c:ea:c0:ed"
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST /var/www/conclave-front/deploy.sh
+workflows:
+  version: 2.1
+  install_and_test:
+    jobs:
+      - install
+      - test_unit:
+          requires:
+            - install
+      - cypress/run:
+          start: npm run serve
+          wait-on: 'http://localhost:8080'
+          store_artifacts: true
+          yarn: true
+      - deploy:
+          requires:
+            - test_unit
+            - cypress/run
