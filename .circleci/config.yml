@@ -82,4 +82,3 @@ workflows:
           requires:
             - test_unit
             - cypress/run
-
