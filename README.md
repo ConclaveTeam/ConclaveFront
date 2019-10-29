@@ -1,39 +1,29 @@
-# conclave
+# Conclave project
+## Frontend part
 
-## Project setup
-```
-yarn install
-```
+[Specs](https://docs.google.com/document/d/1SC1yU7h_dzKMrvta8UQ_C93Qi6DG-htlwyFYX4WFMVM/edit?usp=sharing) | [Demo](https://conclave.dev-ochka.ru/)
 
-### Compiles and hot-reloads for development
+### Run in dev mode
+With yarn
 ```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
+# install dependencies
+yarn
+# run in dev mode
+yarn serve
 ```
 
-### Run your tests
+With npm
 ```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
+# install dependencies
+npm install
+# run in dev mode
+npm run serve
 ```
 
-### Run your end-to-end tests
-```
-yarn run test:e2e
-```
+### Tests and deploying
 
-### Run your unit tests
-```
-yarn run test:unit
-```
+This project uses CircleCI's CI/CD for automating tests and deployment 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Authors
+
+To be done.
