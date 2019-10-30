@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <cbutton :wide="true"> testing button </cbutton>
+    <cbutton> testing button </cbutton>
   </div>
 </template>
 
