@@ -9,7 +9,7 @@
         hover:bg-indigo-100"
         v-bind:class="{ 'ca-button--wide': wide}"
         v-on="$listeners"
-        v-bind="$attrs">
+        v-bind="$attrs">        
         <slot />
     </button>
 </template>
@@ -25,14 +25,11 @@
 }
 </style>
 
-<script>
-export default {
-  name: "ca-button",
-  props: {
-    wide: {
-      default: false,
-      type: Boolean
-    }
-  }
+<script lang = "ts">
+import { Component, Prop, Vue } from 'vue-property-decorator'
+
+@Component
+export default class Button extends Vue{
+  @Prop({ default: false }) readonly wide: boolean | undefined
 }
 </script>
