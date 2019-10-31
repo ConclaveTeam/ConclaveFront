@@ -1,12 +1,12 @@
 <template>
   <button
     class="
-    ca-button border-2 
-    rounded font-bold 
-    uppercase text-lg 
-    text-indigo-600 
-    border-indigo-600 
-    hover:bg-indigo-100
+      ca-button border-2 
+      rounded font-bold 
+      uppercase text-lg 
+      text-indigo-600 
+      border-indigo-600 
+      hover:bg-indigo-100
     "
     :class="{'ca-button--wide': wide}"
     v-on="$listeners"
