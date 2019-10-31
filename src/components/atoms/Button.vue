@@ -28,10 +28,9 @@ export default class Button extends Vue{
 <style lang="scss" scoped>
 .ca-button {
   transition: all .2s ease-in;
-  padding: 10px 30px;
+  padding: 10px 20px;
 }
 .ca-button--wide {
-  width: 400px;
-  padding: 100px;
+  padding: 10px 40px;
 }
 </style>
