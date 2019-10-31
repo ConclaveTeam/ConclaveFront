@@ -5,7 +5,7 @@
     <br><br>
     <br><br>
 
-    <Button>
+    <Button wide>
       testing button
     </Button>
   </div>

@@ -30,6 +30,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Button extends Vue{
-  @Prop({ default: false }) readonly wide: boolean | undefined
+  @Prop({ type: Boolean}) wide!: boolean
 }
 </script>
