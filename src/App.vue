@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <cbutton> testing button </cbutton>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import cbutton from './components/atoms/Button.vue';
+import HelloWorld from './components/HelloWorld.vue';
 
 @Component({
   components: {
-    cbutton
+    HelloWorld,
   },
 })
 export default class App extends Vue {}
