@@ -6,12 +6,13 @@
     uppercase text-lg 
     text-indigo-600 
     border-indigo-600 
-    hover:bg-indigo-100"
-    v-bind:class="{ 'ca-button--wide': wide}"
+    hover:bg-indigo-100
+    "
+    :class="{'ca-button--wide': wide}"
     v-on="$listeners"
     v-bind="$attrs"
-    >        
-      <slot />
+  >
+    <slot />
   </button>
 </template>
 
@@ -34,4 +35,3 @@ export default class Button extends Vue{
   padding: 100px;
 }
 </style>
-
