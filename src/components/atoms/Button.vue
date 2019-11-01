@@ -6,12 +6,15 @@
     uppercase text-lg 
     text-indigo-600 
     border-indigo-600 
-    hover:bg-indigo-100"
-    v-bind:class="{ 'ca-button--wide': wide}"
+    hover:bg-indigo-100
+    "
+    :class="[type === 'ca-button--danger' ? 'ca-button--danger' :
+    type === 'ca-button--info' ? 'ca-button--info' : 'ca-button--primary',
+    {'ca-button--wide': wide}]"
     v-on="$listeners"
     v-bind="$attrs"
-    >        
-      <slot />
+  >        
+    <slot />
   </button>
 </template>
 
@@ -21,17 +24,44 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Button extends Vue{
   @Prop({ type: Boolean}) wide!: boolean
+  @Prop() type!: string
 }
 </script>
 
 <style lang="scss" scoped>
 .ca-button {
   transition: all .2s ease-in;
-  padding: 10px 30px;
+  padding: 10px 20px;
 }
 .ca-button--wide {
-  width: 400px;
-  padding: 100px;
+  padding: 10px 40px;
+}
+
+.ca-button--danger{
+  color: #FC9292;
+  border-color: #FC9292;
+}
+.ca-button--danger:hover{
+  background: #FC92921A;
+  transition: .2s ease-in;
+}
+
+.ca-button--info{
+  color: #C7C7C7;
+  border-color: #C7C7C7;
+}
+.ca-button--info:hover{
+  background: #C7C7C71A;  
+  transition: .2s ease-in;
+}
+
+.ca-button--primary{
+  color: #9298FC;
+  border-color: #9298FC;
+}
+.ca-button--primary:hover{
+  background: #9298FC1A;
+  transition: .2s ease-in;
 }
 </style>
 
