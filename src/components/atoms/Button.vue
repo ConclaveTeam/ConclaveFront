@@ -10,7 +10,8 @@
     "
     :class="{'ca-button--wide': wide,
     'ca-button--danger': type === 'danger',
-    'ca-button--info': type === 'info'}"
+    'ca-button--info': type === 'info',
+    'ca-button--primary': type === 'primary'}"
     v-on="$listeners"
     v-bind="$attrs"
   >        
