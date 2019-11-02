@@ -8,7 +8,11 @@
       border-indigo-600 
       hover:bg-indigo-100
     "
-    :class="{'ca-button--wide': wide}"
+    :class="{
+      'ca-button--wide': wide,
+      'ca-button--danger': type === 'danger',
+      'ca-button--info': type === 'info'
+    }"
     v-on="$listeners"
     v-bind="$attrs"
   >
@@ -22,6 +26,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Button extends Vue{
   @Prop({ type: Boolean}) wide!: boolean
+  @Prop({ default: 'primary'}) type!: string
 }
 </script>
 
@@ -32,5 +37,32 @@ export default class Button extends Vue{
 }
 .ca-button--wide {
   padding: 10px 40px;
+}
+
+.ca-button--danger{
+  color: #FC9292;
+  border-color: #FC9292;
+}
+.ca-button--danger:hover{
+  background: #FC92921A;
+  transition: .2s ease-in;
+}
+
+.ca-button--info{
+  color: #C7C7C7;
+  border-color: #C7C7C7;
+}
+.ca-button--info:hover{
+  background: #C7C7C71A;  
+  transition: .2s ease-in;
+}
+
+.ca-button--primary{
+  color: #9298FC;
+  border-color: #9298FC;
+}
+.ca-button--primary:hover{
+  background: #9298FC1A;
+  transition: .2s ease-in;
 }
 </style>
