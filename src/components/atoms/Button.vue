@@ -8,9 +8,9 @@
     border-indigo-600 
     hover:bg-indigo-100
     "
-    :class="[type === 'ca-button--danger' ? 'ca-button--danger' :
-    type === 'ca-button--info' ? 'ca-button--info' : 'ca-button--primary',
-    {'ca-button--wide': wide}]"
+    :class="{'ca-button--wide': wide,
+    'ca-button--danger': type === 'danger',
+    'ca-button--info': type === 'info'}"
     v-on="$listeners"
     v-bind="$attrs"
   >        
@@ -24,7 +24,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Button extends Vue{
   @Prop({ type: Boolean}) wide!: boolean
-  @Prop() type!: string
+  @Prop({ default: 'primary'}) type!: string
 }
 </script>
 
