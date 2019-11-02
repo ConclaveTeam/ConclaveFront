@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <cbutton> testing button </cbutton>
+    <clink> testing link </clink>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import cbutton from './components/atoms/Button.vue';
+import clink from './components/atoms/Link.vue';
 
 @Component({
   components: {
-    cbutton
+    cbutton,
+    clink
   },
 })
 export default class App extends Vue {}

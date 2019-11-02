@@ -17,7 +17,7 @@ import { Button } from '@/components/atoms'
 
 @Component({
   components: {
-    Button
+    Button,
   }
 })
 export default class HelloWorld extends Vue {

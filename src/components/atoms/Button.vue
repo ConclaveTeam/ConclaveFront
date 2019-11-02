@@ -7,7 +7,6 @@
         text-indigo-600 
         border-indigo-600 
         hover:bg-indigo-100"
-        v-bind:class="{ 'ca-button--wide': wide}"
         v-on="$listeners"
         v-bind="$attrs">
         <slot />
