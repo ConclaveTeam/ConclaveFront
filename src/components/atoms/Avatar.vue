@@ -3,7 +3,7 @@
   class="Avatar"
   :src=imgsrc
   alt="avatar"
-  >
+  />
 </template>
 
 <script lang="ts">
