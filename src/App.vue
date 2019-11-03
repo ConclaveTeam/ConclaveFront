@@ -1,31 +1,25 @@
 <template>
   <div id="app">
-    <cbutton> testing button </cbutton>
-    <clink> testing link </clink>
+    <Button wide>
+      Testing button
+    </Button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import cbutton from './components/atoms/Button.vue';
-import clink from './components/atoms/Link.vue';
+import { Button } from '@/components/atoms';
 
 @Component({
   components: {
-    cbutton,
-    clink
-  },
+    Button
+  }
 })
 export default class App extends Vue {}
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin: 60px;
 }
 </style>

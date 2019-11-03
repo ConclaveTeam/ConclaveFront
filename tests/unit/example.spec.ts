@@ -1,11 +1,14 @@
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import { Button } from '@/components/atoms'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+describe('Button atom', () => {
+  it('Renders test passed into via slot', () => {
+    const msg = 'button text'
+    const wrapped = `<span>${msg}</span>`
+    const wrapper = shallowMount(Button, {
+      scopedSlots: {
+        default: wrapped
+      }
     })
     expect(wrapper.text()).toMatch(msg)
   })
