@@ -1,24 +1,17 @@
 <template>
   <img
   class="Avatar"
-  :src=imgsrc
+  v-bind="$attrs"
   alt="avatar"
-  />
+  >
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-
-@Component
-export default class Avatar extends Vue{
-  @Prop(String) imgsrc!: string
-}
-</script>
 
 <style lang="scss" scoped>
   .Avatar{
     width: 36px;
     height: 36px;
+    object-fit: cover;
     border-radius: 50%;
+    overflow: hidden;
   }
 </style>
